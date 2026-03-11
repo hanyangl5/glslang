@@ -11208,7 +11208,12 @@ yyreduce:
   case 543: /* type_specifier_nonarray: SUBPASSINPUT  */
 #line 3568 "MachineIndependent/glslang.y"
                    {
-        parseContext.requireStage((yyvsp[0].lex).loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage((yyvsp[0].lex).loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         (yyval.interm.type).init((yyvsp[0].lex).loc, parseContext.symbolTable.atGlobalLevel());
         (yyval.interm.type).basicType = EbtSampler;
         (yyval.interm.type).sampler.setSubpass(EbtFloat);
@@ -11219,7 +11224,12 @@ yyreduce:
   case 544: /* type_specifier_nonarray: SUBPASSINPUTMS  */
 #line 3574 "MachineIndependent/glslang.y"
                      {
-        parseContext.requireStage((yyvsp[0].lex).loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage((yyvsp[0].lex).loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         (yyval.interm.type).init((yyvsp[0].lex).loc, parseContext.symbolTable.atGlobalLevel());
         (yyval.interm.type).basicType = EbtSampler;
         (yyval.interm.type).sampler.setSubpass(EbtFloat, true);
@@ -11231,7 +11241,12 @@ yyreduce:
 #line 3580 "MachineIndependent/glslang.y"
                       {
         parseContext.float16OpaqueCheck((yyvsp[0].lex).loc, "half float subpass input", parseContext.symbolTable.atBuiltInLevel());
-        parseContext.requireStage((yyvsp[0].lex).loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage((yyvsp[0].lex).loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         (yyval.interm.type).init((yyvsp[0].lex).loc, parseContext.symbolTable.atGlobalLevel());
         (yyval.interm.type).basicType = EbtSampler;
         (yyval.interm.type).sampler.setSubpass(EbtFloat16);
@@ -11243,7 +11258,12 @@ yyreduce:
 #line 3587 "MachineIndependent/glslang.y"
                         {
         parseContext.float16OpaqueCheck((yyvsp[0].lex).loc, "half float subpass input", parseContext.symbolTable.atBuiltInLevel());
-        parseContext.requireStage((yyvsp[0].lex).loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage((yyvsp[0].lex).loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         (yyval.interm.type).init((yyvsp[0].lex).loc, parseContext.symbolTable.atGlobalLevel());
         (yyval.interm.type).basicType = EbtSampler;
         (yyval.interm.type).sampler.setSubpass(EbtFloat16, true);
@@ -11254,7 +11274,12 @@ yyreduce:
   case 547: /* type_specifier_nonarray: ISUBPASSINPUT  */
 #line 3594 "MachineIndependent/glslang.y"
                     {
-        parseContext.requireStage((yyvsp[0].lex).loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage((yyvsp[0].lex).loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         (yyval.interm.type).init((yyvsp[0].lex).loc, parseContext.symbolTable.atGlobalLevel());
         (yyval.interm.type).basicType = EbtSampler;
         (yyval.interm.type).sampler.setSubpass(EbtInt);
@@ -11265,7 +11290,12 @@ yyreduce:
   case 548: /* type_specifier_nonarray: ISUBPASSINPUTMS  */
 #line 3600 "MachineIndependent/glslang.y"
                       {
-        parseContext.requireStage((yyvsp[0].lex).loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage((yyvsp[0].lex).loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         (yyval.interm.type).init((yyvsp[0].lex).loc, parseContext.symbolTable.atGlobalLevel());
         (yyval.interm.type).basicType = EbtSampler;
         (yyval.interm.type).sampler.setSubpass(EbtInt, true);
@@ -11276,7 +11306,12 @@ yyreduce:
   case 549: /* type_specifier_nonarray: USUBPASSINPUT  */
 #line 3606 "MachineIndependent/glslang.y"
                     {
-        parseContext.requireStage((yyvsp[0].lex).loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage((yyvsp[0].lex).loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         (yyval.interm.type).init((yyvsp[0].lex).loc, parseContext.symbolTable.atGlobalLevel());
         (yyval.interm.type).basicType = EbtSampler;
         (yyval.interm.type).sampler.setSubpass(EbtUint);
@@ -11287,7 +11322,12 @@ yyreduce:
   case 550: /* type_specifier_nonarray: USUBPASSINPUTMS  */
 #line 3612 "MachineIndependent/glslang.y"
                       {
-        parseContext.requireStage((yyvsp[0].lex).loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage((yyvsp[0].lex).loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         (yyval.interm.type).init((yyvsp[0].lex).loc, parseContext.symbolTable.atGlobalLevel());
         (yyval.interm.type).basicType = EbtSampler;
         (yyval.interm.type).sampler.setSubpass(EbtUint, true);
@@ -13316,4 +13356,3 @@ yyreturnlab:
 }
 
 #line 4666 "MachineIndependent/glslang.y"
-

@@ -3566,51 +3566,91 @@ type_specifier_nonarray
         $$.sampler.setAttachmentEXT(EbtUint);
     }
     | SUBPASSINPUT {
-        parseContext.requireStage($1.loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage($1.loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         $$.init($1.loc, parseContext.symbolTable.atGlobalLevel());
         $$.basicType = EbtSampler;
         $$.sampler.setSubpass(EbtFloat);
     }
     | SUBPASSINPUTMS {
-        parseContext.requireStage($1.loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage($1.loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         $$.init($1.loc, parseContext.symbolTable.atGlobalLevel());
         $$.basicType = EbtSampler;
         $$.sampler.setSubpass(EbtFloat, true);
     }
     | F16SUBPASSINPUT {
         parseContext.float16OpaqueCheck($1.loc, "half float subpass input", parseContext.symbolTable.atBuiltInLevel());
-        parseContext.requireStage($1.loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage($1.loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         $$.init($1.loc, parseContext.symbolTable.atGlobalLevel());
         $$.basicType = EbtSampler;
         $$.sampler.setSubpass(EbtFloat16);
     }
     | F16SUBPASSINPUTMS {
         parseContext.float16OpaqueCheck($1.loc, "half float subpass input", parseContext.symbolTable.atBuiltInLevel());
-        parseContext.requireStage($1.loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage($1.loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         $$.init($1.loc, parseContext.symbolTable.atGlobalLevel());
         $$.basicType = EbtSampler;
         $$.sampler.setSubpass(EbtFloat16, true);
     }
     | ISUBPASSINPUT {
-        parseContext.requireStage($1.loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage($1.loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         $$.init($1.loc, parseContext.symbolTable.atGlobalLevel());
         $$.basicType = EbtSampler;
         $$.sampler.setSubpass(EbtInt);
     }
     | ISUBPASSINPUTMS {
-        parseContext.requireStage($1.loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage($1.loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         $$.init($1.loc, parseContext.symbolTable.atGlobalLevel());
         $$.basicType = EbtSampler;
         $$.sampler.setSubpass(EbtInt, true);
     }
     | USUBPASSINPUT {
-        parseContext.requireStage($1.loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage($1.loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         $$.init($1.loc, parseContext.symbolTable.atGlobalLevel());
         $$.basicType = EbtSampler;
         $$.sampler.setSubpass(EbtUint);
     }
     | USUBPASSINPUTMS {
-        parseContext.requireStage($1.loc, EShLangFragment, "subpass input");
+        if (! parseContext.symbolTable.atBuiltInLevel())
+            parseContext.requireStage($1.loc,
+                (EShLanguageMask)(parseContext.extensionTurnedOn(E_GL_HUAWEI_subpass_shading) ?
+                    (EShLangFragmentMask | EShLangComputeMask) :
+                    EShLangFragmentMask),
+                "subpass input");
         $$.init($1.loc, parseContext.symbolTable.atGlobalLevel());
         $$.basicType = EbtSampler;
         $$.sampler.setSubpass(EbtUint, true);

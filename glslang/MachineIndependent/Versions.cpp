@@ -324,6 +324,9 @@ void TParseVersions::initializeExtensionBehavior()
     extensionBehavior[E_GL_ARM_shader_core_builtins]                 = EBhDisable;
     extensionBehavior[E_GL_ARM_tensors]                              = EBhDisable;
 
+    // HUAWEI
+    extensionBehavior[E_GL_HUAWEI_subpass_shading]                   = EBhDisable;
+
     // QCOM
     extensionBehavior[E_GL_QCOM_image_processing]                    = EBhDisable;
     extensionBehavior[E_GL_QCOM_image_processing2]                   = EBhDisable;
@@ -475,6 +478,8 @@ void TParseVersions::getPreamble(std::string& preamble)
             "#define GL_OES_texture_cube_map_array 1\n"
             "#define GL_EXT_shader_non_constant_global_initializers 1\n"
 
+            "#define GL_HUAWEI_subpass_shading 1\n"
+
             "#define GL_QCOM_image_processing 1\n"
             "#define GL_QCOM_image_processing2 1\n"
             "#define GL_QCOM_tile_shading 1\n"
@@ -608,6 +613,8 @@ void TParseVersions::getPreamble(std::string& preamble)
             "#define GL_NV_shader_invocation_reorder 1\n"
             "#define GL_NV_cooperative_matrix2 1\n"
             "#define GL_NV_explicit_typecast 1\n"
+
+            "#define GL_HUAWEI_subpass_shading 1\n"
 
             "#define GL_QCOM_image_processing 1\n"
             "#define GL_QCOM_image_processing2 1\n"
@@ -1206,6 +1213,16 @@ void TParseVersions::extensionRequires(const TSourceLoc &loc, const char * const
                 error(loc, "not allowed when using generating SPIR-V codes", extension, "");
         }
     }
+
+    // if (isEnabled && strcmp(extension, E_GL_HUAWEI_subpass_shading) == 0 && spvVersion.vulkan > 0) {
+    //     if (spvVersion.vulkan < EShTargetVulkan_1_2) {
+    //         error(loc, "requires Vulkan 1.2 plus VK_KHR_create_renderpass2 and VK_KHR_synchronization2, or Vulkan 1.3",
+    //               extension, "");
+    //     } else if (spvVersion.vulkan == EShTargetVulkan_1_2) {
+    //         warn(loc, "runtime Vulkan dependency cannot be verified by glslang; requires VK_KHR_create_renderpass2 and VK_KHR_synchronization2, or Vulkan 1.3",
+    //              extension, "");
+    //     }
+    // }
 }
 
 // Call for any operation needing full GLSL integer data-type support.

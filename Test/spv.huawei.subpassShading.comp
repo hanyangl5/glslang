@@ -1,0 +1,5 @@
+#version 450
+#extension GL_HUAWEI_subpass_shading : require
+layout(local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
+layout(input_attachment_index = 0, set = 0, binding = 0) uniform subpassInput s;
+void main() { vec4 v = subpassLoad(s); }

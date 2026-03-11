@@ -7787,6 +7787,14 @@ void TBuiltIns::addSubpassSampling(TSampler sampler, const TString& typeName, in
     if (sampler.isMultiSample())
         stageBuiltins[EShLangFragment].append(", int");
     stageBuiltins[EShLangFragment].append(");\n");
+
+    stageBuiltins[EShLangCompute].append(prefixes[sampler.type]);
+    stageBuiltins[EShLangCompute].append("vec4 subpassLoad");
+    stageBuiltins[EShLangCompute].append("(");
+    stageBuiltins[EShLangCompute].append(typeName.c_str());
+    if (sampler.isMultiSample())
+        stageBuiltins[EShLangCompute].append(", int");
+    stageBuiltins[EShLangCompute].append(");\n");
 }
 
 //
@@ -10012,6 +10020,8 @@ void TBuiltIns::identifyBuiltIns(int version, EProfile profile, const SpvVersion
             symbolTable.setFunctionExtensions("groupMemoryBarrier",         1, &E_GL_ARB_compute_shader);
         }
 
+        symbolTable.setFunctionExtensions("subpassLoad",                 1, &E_GL_HUAWEI_subpass_shading);
+        symbolTable.setFunctionExtensions("subpassLoadMS",               1, &E_GL_HUAWEI_subpass_shading);
 
         symbolTable.setFunctionExtensions("controlBarrier",                 1, &E_GL_KHR_memory_scope_semantics);
         symbolTable.setFunctionExtensions("debugPrintfEXT",                 1, &E_GL_EXT_debug_printf);

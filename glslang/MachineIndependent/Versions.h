@@ -302,6 +302,9 @@ const char* const E_GL_NV_explicit_typecast                     = "GL_NV_explici
 const char* const E_GL_ARM_shader_core_builtins                 = "GL_ARM_shader_core_builtins";
 const char* const E_GL_ARM_tensors                              = "GL_ARM_tensors";
 
+// HUAWEI
+const char* const E_GL_HUAWEI_subpass_shading                   = "GL_HUAWEI_subpass_shading";
+
 // Arrays of extensions for the above viewportEXTs duplications
 
 const char* const viewportEXTs[] = { E_GL_ARB_shader_viewport_layer_array, E_GL_NV_viewport_array2 };
